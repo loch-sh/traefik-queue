@@ -4,6 +4,7 @@ import: github.com/loch-sh/traefik-queue
 summary: |
   This plugin implements a queue management system for Traefik services, limiting the number of concurrent users and placing excess traffic in a fair, first-come-first-served queue with automatic refresh.
 iconPath: .assets/icon.png
+bannerPath: .assets/banner.png
 testData:
   enabled: true
   maxEntries: 100

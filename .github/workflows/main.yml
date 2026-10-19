@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GOPATH: ${{ github.workspace }}/go
+      YAEGI_VERSION: v0.16.1
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/go/src/github.com/${{ github.repository }}
+
+    steps:
+      # Yaegi (the interpreter Traefik uses to run plugins) needs a GOPATH layout.
+      - uses: actions/checkout@v7
+        with:
+          path: go/src/github.com/${{ github.repository }}
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version: stable
+
+      - name: Test
+        run: go test -v -cover ./...
+
+      - name: Install Yaegi
+        run: |
+          go install github.com/traefik/yaegi/cmd/yaegi@${YAEGI_VERSION}
+          echo "${GOPATH}/bin" >> "$GITHUB_PATH"
+
+      - name: Test with Yaegi
+        run: yaegi test -v .
+        env:
+          GO111MODULE: "off"

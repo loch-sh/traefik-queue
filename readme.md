@@ -1,3 +1,5 @@
+![Queue Manager](.assets/banner.png)
+
 # Loch Queue Manager
 
 Based on github.com/hhftechnology/traefik-queue-manager
@@ -313,3 +315,5 @@ For high-availability setups, consider using a shared Redis cache or similar sol
 Copyright 2025 Loch.sh
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.
+
+This project is a modified version of [Traefik Queue Manager](https://github.com/hhftechnology/traefik-queue-manager) by HHF Technology, also licensed under Apache 2.0. See [NOTICE](NOTICE) for attribution.

@@ -1,0 +1,10 @@
+Loch Queue Manager
+Copyright 2025 Loch.sh
+
+This product is a derivative work of Traefik Queue Manager
+(https://github.com/hhftechnology/traefik-queue-manager),
+developed by HHF Technology and licensed under the Apache License, Version 2.0.
+
+The original source files have been modified by Loch.sh. Changes include,
+among others: renaming of the Go package and module, split of the code into
+multiple files, JSON API responses and rate limiting.
