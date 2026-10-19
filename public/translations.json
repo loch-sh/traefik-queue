@@ -1,0 +1,56 @@
+{
+  "en": {
+    "pageTitle": "Service Queue - Please Wait",
+    "title": "You're in the Queue",
+    "introduction": "Our services are currently experiencing high demand. Your patience is appreciated. You will be automatically redirected when it's your turn.",
+    "yourPosition": "Your Position",
+    "eta": "Estimated Wait Time",
+    "refreshTime": "This page will automatically refresh in <span id=\"countdown\">%d</span> seconds",
+    "mins": "min(s)"
+  },
+  "fr": {
+    "pageTitle": "File d’attente - Veuillez patienter",
+    "title": "Vous êtes dans la file d'attente",
+    "introduction": "Nos services rencontrent actuellement une forte demande. Merci pour votre patience. Vous serez automatiquement redirigé lorsque ce sera votre tour.",
+    "yourPosition": "Votre position",
+    "eta": "Temps d’attente estimé",
+    "refreshTime": "Cette page se rafraîchira automatiquement dans <span id=\"countdown\">%d</span> secondes",
+    "mins": "min(s)"
+  },
+  "es": {
+    "pageTitle": "Cola de servicio - Por favor espere",
+    "title": "Estás en la cola",
+    "introduction": "Nuestros servicios están experimentando una alta demanda. Agradecemos tu paciencia. Serás redirigido automáticamente cuando sea tu turno.",
+    "yourPosition": "Tu posición",
+    "eta": "Tiempo de espera estimado",
+    "refreshTime": "Esta página se actualizará automáticamente en <span id=\"countdown\">%d</span> segundos",
+    "mins": "min(s)"
+  },
+  "de": {
+    "pageTitle": "Warteschlange - Bitte warten",
+    "title": "Sie befinden sich in der Warteschlange",
+    "introduction": "Unsere Dienste verzeichnen derzeit eine hohe Nachfrage. Vielen Dank für Ihre Geduld. Sie werden automatisch weitergeleitet, wenn Sie an der Reihe sind.",
+    "yourPosition": "Ihre Position",
+    "eta": "Geschätzte Wartezeit",
+    "refreshTime": "Diese Seite wird in <span id=\"countdown\">%d</span> Sekunden automatisch aktualisiert",
+    "mins": "min(s)"
+  },
+  "pt": {
+    "pageTitle": "Fila de serviço - Por favor, aguarde",
+    "title": "Você está na fila",
+    "introduction": "Nossos serviços estão com alta demanda no momento. Agradecemos sua paciência. Você será redirecionado automaticamente quando for a sua vez.",
+    "yourPosition": "Sua posição",
+    "eta": "Tempo de espera estimado",
+    "refreshTime": "Esta página será atualizada automaticamente em <span id=\"countdown\">%d</span> segundos",
+    "mins": "min(s)"
+  },
+  "it": {
+    "pageTitle": "Coda del servizio - Attendere prego",
+    "title": "Sei in coda",
+    "introduction": "I nostri servizi stanno riscontrando un'alta domanda. Ti ringraziamo per la pazienza. Verrai reindirizzato automaticamente quando sarà il tuo turno.",
+    "yourPosition": "La tua posizione",
+    "eta": "Tempo di attesa stimato",
+    "refreshTime": "Questa pagina si aggiornerà automaticamente tra <span id=\"countdown\">%d</span> secondi",
+    "mins": "min(s)"
+  }
+}

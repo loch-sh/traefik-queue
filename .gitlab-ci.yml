@@ -1,0 +1,10 @@
+stages:
+  - test
+
+build:
+  image: alpine:latest
+  script:
+    - apk add go
+    - go test -v -cover .
+  only:
+    - main

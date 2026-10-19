@@ -1,0 +1,70 @@
+services:
+  traefik:
+    image: traefik:v3.6
+    command:
+      - --log.level=INFO
+      - --api
+      - --api.dashboard
+      - --api.insecure=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+      - --experimental.localPlugins.queuemanager.moduleName=github.com/loch-sh/traefik-queue
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - traefik-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/plugins-local/src/github.com/loch-sh/traefik-queue
+      - ./public:/var/public
+
+  whoami:
+    image: traefik/whoami
+    depends_on:
+      - traefik
+    networks:
+      - traefik-network
+    volumes:
+      - ./:/plugins-local/src/github.com/loch-sh/traefik-queue
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whoami.rule=Host(`localhost`)
+      - traefik.http.routers.whoami.entrypoints=web
+      - traefik.http.routers.whoami.service=whoami-service
+      - traefik.http.services.whoami-service.loadbalancer.server.port=80
+      - traefik.http.routers.whoami.middlewares=qm1
+      - traefik.http.middlewares.qm1.plugin.queuemanager.enabled=true
+      - traefik.http.middlewares.qm1.plugin.queuemanager.maxEntries=1
+      - traefik.http.middlewares.qm1.plugin.queuemanager.sessionTime=1m
+      - traefik.http.middlewares.qm1.plugin.queuemanager.purgeTime=5m
+      - traefik.http.middlewares.qm1.plugin.queuemanager.useCookies=true
+      - traefik.http.middlewares.qm1.plugin.queuemanager.cookieName=loch-queue-id
+      - traefik.http.middlewares.qm1.plugin.queuemanager.refreshInterval=30
+      - traefik.http.middlewares.qm1.plugin.queuemanager.debug=true
+
+  nginx:
+    image: nginx
+    depends_on:
+      - traefik
+    networks:
+      - traefik-network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.service2.rule=Host(`127.0.0.1`)
+      - traefik.http.routers.service2.entrypoints=web
+      - traefik.http.routers.service2.service=nginx-service
+      - traefik.http.services.nginx-service.loadbalancer.server.port=80
+      - traefik.http.routers.service2.middlewares=qm2
+      - traefik.http.middlewares.qm2.plugin.queuemanager.enabled=true
+      - traefik.http.middlewares.qm2.plugin.queuemanager.maxEntries=2
+      - traefik.http.middlewares.qm2.plugin.queuemanager.sessionTime=1m
+      - traefik.http.middlewares.qm2.plugin.queuemanager.purgeTime=5m
+      - traefik.http.middlewares.qm2.plugin.queuemanager.useCookies=true
+      - traefik.http.middlewares.qm2.plugin.queuemanager.cookieName=loch-queue-id
+      - traefik.http.middlewares.qm2.plugin.queuemanager.refreshInterval=30
+      - traefik.http.middlewares.qm2.plugin.queuemanager.debug=true
+
+networks:
+  traefik-network:
+    driver: bridge
